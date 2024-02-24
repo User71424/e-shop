@@ -16,8 +16,8 @@ def main():
     supplier1 = Supplier(partner_id="1002", name="Завод 'Прометей'", email="prometey@example.com", phone_number="1122334455")
 
     # Создаем товары
-    product1 = Product(product_id="10001", name="Компьютер", price=50000)
-    product2 = Product(product_id="10034", name="Мышь", price=500)
+    product1 = Product(product_id="10001", name="Компьютер")
+    product2 = Product(product_id="10034", name="Мышь")
 
     # Создаем заказы
     order1 = Order(order_id=1, client_id=client1.partner_id, supplier_id=supplier1.partner_id,
@@ -31,7 +31,7 @@ def main():
 
     # Сохраняем информацию в JSON файлы
     client1.save_to_json('client1.json')
-    client2.save_to_json('client2.json')
+    client2.save_to_json('client1.json')
     supplier1.save_to_json('supplier1.json')
     product1.save_to_json('product1.json')
     product2.save_to_json('product2.json')

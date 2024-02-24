@@ -1,11 +1,10 @@
 import json
 
+
 class Product:
-    def __init__(self, product_id, name, price):
+    def __init__(self, product_id, name):
         self.product_id = product_id
         self.name = name
-        self.price = price
-        self.quantity = -1  # Пример намеренной ошибки: некорректное начальное значение
 
     def save_to_json(self, file_name):
         product_info = {
