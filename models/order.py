@@ -20,30 +20,23 @@ class Order:
         """Удаляет товар из заказа по названию."""
         self.items = [i for i in self.items if i[0] != item]
 
-    def save_to_json(self, file_name):
-        order_info = {
-            "order_id": self.order_id,
-            "client_id": self.client_id,
-            "supplier_id": self.supplier_id,
-            "manager_id": self.manager_id,
-            "status": self.status,
-            "items": [{"item": item[0], "price": item[1], "quantity": item[2]} for item in self.items],
-            "created_at": self.created_at.strftime("%Y-%m-%d %H:%M:%S")
-        }
-        with open(file_name, 'w') as file:
-            json.dump(order_info, file, ensure_ascii=False, indent=4)
-
-    def update_order_status(self, new_status):
-        self.status = new_status
-
-    def get_order_details(self):
+    def get_details(self):
         return {
             "order_id": self.order_id,
             "client_id": self.client_id,
             "supplier_id": self.supplier_id,
             "manager_id": self.manager_id,
             "status": self.status,
-            "items": [{"item": item["item"], "price": item["price"], "quantity": item["quantity"]} for item \
-                      in self.items],
+            "items": self.items,
             "created_at": self.created_at
         }
+
+    def update_order_status(self, new_status):
+        self.status = new_status
+
+    def __str__(self):
+        return str(self.get_details())
+
+    def __repr__(self):
+        return f'Order({self.order_id}, {self.client_id}, {self.supplier_id}, {self.manager_id}, {self.status!r},' \
+               f' {self.items, self.created_at})'
